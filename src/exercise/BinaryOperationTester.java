@@ -1,3 +1,5 @@
+package exercise;
+
 public class BinaryOperationTester {
     public static void main(String[] args) {
         BinaryOperation bop;
