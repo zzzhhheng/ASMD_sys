@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+/*User抽象类是所有人员类的基类，包含人员所必须的基本信息
+ *User类的子类有，Teacher类，Student类，Administrator类
+ *Administrator类又有子类，SchoolAdministrator类，SuperAdministrator类*/
 abstract class User {
     private int userID;         //用户Id
     private String userName;    //用户名
