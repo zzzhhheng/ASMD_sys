@@ -1,3 +1,5 @@
+package user;
+
 import java.util.ArrayList;
 /*学校类中包含某个学校的所有班级信息
 可以通过声明一个学校类型的变量进行学校信息的存储和增删改查*/

@@ -1,3 +1,6 @@
+package user;
+
+
 import java.util.ArrayList;
 
 /*User抽象类是所有人员类的基类，包含人员所必须的基本信息
@@ -52,10 +55,11 @@ abstract class User {
 
 
 }
-class Student extends User{
+
+class Student extends User {
     private String LearningClass;                            //班级
     private String studentGrade;                             //年级
-    private ArrayList<BinaryOperation>studentWrongQuestion;  //错题数组
+    private ArrayList<Object> studentWrongQuestion;  //错题数组
     private String studentSchool;                            //学校
 
     public String getLearningClass() {
@@ -74,11 +78,11 @@ class Student extends User{
         this.studentGrade = studentGrade;
     }
 
-    public ArrayList<BinaryOperation> getStudentWrongQuestion() {
+    public ArrayList<Object> getStudentWrongQuestion() {
         return studentWrongQuestion;
     }
 
-    public void setStudentWrongQuestion(ArrayList<BinaryOperation> studentWrongQuestion) {
+    public void setStudentWrongQuestion(ArrayList<Object> studentWrongQuestion) {
         this.studentWrongQuestion = studentWrongQuestion;
     }
 
@@ -92,34 +96,37 @@ class Student extends User{
 
 
     //正常练习，输入题目数目，返回题目类型数组(方法先这样写，等梦珂分析好返回值和参数再改，-2023.3.10魔理沙)
-    public ArrayList<BinaryOperation>normalPractice(int number){
-        ArrayList<BinaryOperation>answ=new ArrayList<>();
+    public ArrayList<Object> normalPractice(int number) {
+        ArrayList<Object> answ = new ArrayList<>();
         return answ;
     }
 
     //复习练习，输入题目数量，返回题目类型数组
-    public ArrayList<BinaryOperation>reviewPractice(int number){
-        ArrayList<BinaryOperation>answ=new ArrayList<>();
+    public ArrayList<Object> reviewPractice(int number) {
+        ArrayList<Object> answ = new ArrayList<>();
         return answ;
     }
 
     //困难练习，输入题目数量，返回题目类型数组
-    public ArrayList<BinaryOperation>hardPractice(int number){
-        ArrayList<BinaryOperation>answ=new ArrayList<>();
+    public ArrayList<Object> hardPractice(int number) {
+        ArrayList<Object> answ = new ArrayList<>();
         return answ;
     }
+
     //做作业，通过查询数据库，看老师是否布置作业，如果布置了，学生选择试卷并返回题目类型数组，如果没有，弹出窗口提示没有作业
-    public ArrayList<BinaryOperation>doHomework(){
-        ArrayList<BinaryOperation>answ=new ArrayList<>();
+    public ArrayList<Object> doHomework() {
+        ArrayList<Object> answ = new ArrayList<>();
         return answ;
     }
+
     //查看历史错题，输入题目数量，返回题目类型数组
-    public ArrayList<BinaryOperation>viewWrongQuestion(int number){
-        ArrayList<BinaryOperation>answ=new ArrayList<>();
+    public ArrayList<Object> viewWrongQuestion(int number) {
+        ArrayList<Object> answ = new ArrayList<>();
         return answ;
     }
 }
-class Teacher extends User{
+
+class Teacher extends User {
     private String teachingClass;  //班级
     private String teacherSchool;  //学校
 
@@ -140,15 +147,17 @@ class Teacher extends User{
     }
 
     //管理班级，进入该界面之后有三个选项，包括删除学生，修改学生信息，查询学生信息，教师需要再次选择
-    void managementClass(){
+    void managementClass() {
 
     }
+
     //出试卷，教师通过自己输入题目内容，整合出一张试卷存入数据库
-    void publishPaper(ArrayList<BinaryOperation>problems){
+    void publishPaper(ArrayList<Object> problems) {
 
     }
+
     //添加学生，输入学生信息，存入数据库。因为用的比较频繁，与管理学生的方法分离开
-    void addStudent(Student stu){
+    void addStudent(Student stu) {
 
     }
 
