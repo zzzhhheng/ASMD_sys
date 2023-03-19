@@ -59,7 +59,7 @@ public class Exercise {
         BinaryOperation anOperation = null;
         while (operationCount > 0) {
             do {
-                anOperation = new SubstractOperation();
+                anOperation = new MultiplyOperation();
 
             }
             while (operationList.contains(anOperation));
@@ -73,7 +73,7 @@ public class Exercise {
         BinaryOperation anOperation = null;
         while (operationCount > 0) {
             do {
-                anOperation = new SubstractOperation();
+                anOperation = new DivisionOperation();
 
             }
             while (operationList.contains(anOperation));
