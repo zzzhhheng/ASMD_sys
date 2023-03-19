@@ -13,7 +13,7 @@ public class Exercise {
     private ArrayList<BinaryOperation> operationList = new ArrayList<>();
     private int current = 0;//用于遍历数据集
 
-    public void generateBinaryExercise(int operationCount) {
+    public ArrayList<BinaryOperation> generateBinaryExercise(int operationCount) {
         BinaryOperation anOperation = null;
         while (operationCount > 0) {
             do {
@@ -23,10 +23,10 @@ public class Exercise {
             operationCount--;
             operationList.add(anOperation);
         }
-
+        return operationList;
     }
 
-    public void generateAdditionExercise(int operationCount) {
+    public ArrayList<BinaryOperation> generateAdditionExercise(int operationCount) {
         BinaryOperation anOperation = null;
         while (operationCount > 0) {
             do {
@@ -38,10 +38,10 @@ public class Exercise {
             operationCount--;
             operationList.add(anOperation);
         }
-
+        return operationList;
     }
 
-    public void generateSubstractExercise(int operationCount) {
+    public ArrayList<BinaryOperation> generateSubstractExercise(int operationCount) {
         BinaryOperation anOperation = null;
         while (operationCount > 0) {
             do {
@@ -53,9 +53,9 @@ public class Exercise {
             operationCount--;
             operationList.add(anOperation);
         }
-
+        return operationList;
     }
-    public void generateMultiplyExercise(int operationCount) {
+    public ArrayList<BinaryOperation> generateMultiplyExercise(int operationCount) {
         BinaryOperation anOperation = null;
         while (operationCount > 0) {
             do {
@@ -67,9 +67,9 @@ public class Exercise {
             operationCount--;
             operationList.add(anOperation);
         }
-
+        return operationList;
     }
-    public void generateDivisionExercise(int operationCount) {
+    public ArrayList<BinaryOperation> generateDivisionExercise(int operationCount) {
         BinaryOperation anOperation = null;
         while (operationCount > 0) {
             do {
@@ -81,7 +81,7 @@ public class Exercise {
             operationCount--;
             operationList.add(anOperation);
         }
-
+        return operationList;
     }
 //随机生成加减乘除中的任意一种
     private BinaryOperation generateOperation() {
