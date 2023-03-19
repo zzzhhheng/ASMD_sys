@@ -140,7 +140,7 @@ class SubstractOperation extends BinaryOperation {
 }
 
 /**
- * MultiplyOperation类是产生减法法算式类
+ * MultiplyOperation类是产生乘法法算式类
  * MultiplyOperation()构造函数调用基类的 generateBinaryOperation()方法并传入参数生成成员变量的值
  */
 class MultiplyOperation extends BinaryOperation {
@@ -158,7 +158,7 @@ class MultiplyOperation extends BinaryOperation {
 }
 
 /**
- * DivisionOperation类是产生减法法算式类
+ * DivisionOperation类是产生除法法算式类
  * DivisionOperation()构造函数调用基类的 generateBinaryOperation()方法并传入参数生成成员变量的值
  * 该类的calculate方法与其他不同增加了检测算式是否为整数除法算式不带小数
  */

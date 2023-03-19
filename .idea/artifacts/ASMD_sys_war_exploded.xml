@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ASMD_sys:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ASMD_sys_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ASMD_sys" />
+          <element id="library" level="project" name="apache-tomcat-9.0" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="struts2" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="ASMD_sys/web/Web" />
+    </root>
+  </artifact>
+</component>
