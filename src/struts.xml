@@ -7,7 +7,7 @@
 <struts>
     <package name="default" namespace="/default" extends="struts-default">
         <action name="login" class="login.loginAction" method="execute">
-            <result name="success" >/writeWindows/successlogin.jsp</result>
+
         </action>
     </package>
 </struts>

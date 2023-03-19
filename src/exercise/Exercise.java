@@ -13,8 +13,7 @@ public class Exercise {
     private ArrayList<BinaryOperation> operationList = new ArrayList<>();
     private int current = 0;//用于遍历数据集
 
-
-    public ArrayList<BinaryOperation> generateAdditionExercise(int operationCount) {
+    public void generateAdditionExercise(int operationCount) {
         BinaryOperation anOperation = null;
         while (operationCount > 0) {
             do {
@@ -26,10 +25,10 @@ public class Exercise {
             operationCount--;
             operationList.add(anOperation);
         }
-        return operationList;
+
     }
 
-    public ArrayList<BinaryOperation> generateSubstractExercise(int operationCount) {
+    public void generateSubstractExercise(int operationCount) {
         BinaryOperation anOperation = null;
         while (operationCount > 0) {
             do {
@@ -41,13 +40,13 @@ public class Exercise {
             operationCount--;
             operationList.add(anOperation);
         }
-        return operationList;
+
     }
-    public ArrayList<BinaryOperation> generateMultiplyExercise(int operationCount) {
+    public void generateMultiplyExercise(int operationCount) {
         BinaryOperation anOperation = null;
         while (operationCount > 0) {
             do {
-                anOperation = new SubstractOperation();
+                anOperation = new MultiplyOperation();
 
             }
             while (operationList.contains(anOperation));
@@ -55,13 +54,13 @@ public class Exercise {
             operationCount--;
             operationList.add(anOperation);
         }
-        return operationList;
+
     }
-    public ArrayList<BinaryOperation> generateDivisionExercise(int operationCount) {
+    public void generateDivisionExercise(int operationCount) {
         BinaryOperation anOperation = null;
         while (operationCount > 0) {
             do {
-                anOperation = new SubstractOperation();
+                anOperation = new DivisionOperation();
 
             }
             while (operationList.contains(anOperation));
@@ -69,7 +68,7 @@ public class Exercise {
             operationCount--;
             operationList.add(anOperation);
         }
-        return operationList;
+
     }
 
 
