@@ -9,7 +9,7 @@ import java.util.Random;
  * operator是算式中的运算符
  * value是算式的结果
  */
-abstract class BinaryOperation {
+public abstract class BinaryOperation {
     static final int UPPER = 100;
     static final int LOW = 0;
     private int left_operand = 0;
