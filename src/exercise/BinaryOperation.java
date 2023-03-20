@@ -80,11 +80,35 @@ abstract class BinaryOperation {
 
         int left, right, result;
         Random random = new Random();
-        left = random.nextInt(UPPER + 1);
-        do {
-            right = random.nextInt(UPPER + 1);
-            result = calculate(left, right);
-        } while (!(checkingCalculation(result)));
+
+        //生成left和right
+         if(anOperator=='*'){   //如果是乘法，将两个数都限制在10以内（如果添加难度分级功能的话，可以增加难度比如一个是十位数往上的，一个是有个位的比如21*4，甚至可以增加小数，比如19.6*5）
+            left = random.nextInt(11);
+            do {
+                right = random.nextInt(11);
+                result = calculate(left, right);
+            } while (!(checkingCalculation(result)));
+        }else if(anOperator=='/') {  //如果是除法，两个数相同的概率比较大，所以如果相同，就再随机一次（如果添加难度分级的话，将结果为两位数的分离为难题，比如91/3，将属于99乘法表的分离为简单题，比如81/9=9）
+            left = random.nextInt(UPPER + 1);
+            do {
+                right = random.nextInt(UPPER + 1);
+                result = calculate(left, right);
+            } while (!(checkingCalculation(result)));
+            if(right==left){
+                left = random.nextInt(UPPER + 1);
+                do {
+                    right = random.nextInt(UPPER + 1);
+                    result = calculate(left, right);
+                } while (!(checkingCalculation(result)));
+            }
+        }else {
+                left = random.nextInt(UPPER + 1);
+                do {
+                    right = random.nextInt(UPPER + 1);
+                    result = calculate(left, right);
+                } while (!(checkingCalculation(result)));
+            }
+        
         left_operand = left;
         right_operand = right;
         operator = anOperator;
