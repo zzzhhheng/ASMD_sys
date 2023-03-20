@@ -173,6 +173,9 @@ class DivisionOperation extends BinaryOperation {
 
     int calculate(int left, int right) {
         int n = -1;
+        if (right == 0){
+            return n;
+        }
         if (left % right == 0) {
             n = left / right;
         }
