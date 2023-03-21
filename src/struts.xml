@@ -9,5 +9,11 @@
         <action name="login" class="login.loginAction" method="execute">
 
         </action>
+        <action name="Exercise" class="Action.GetQuestionAction" method="execute">
+
+        </action>
+        <action name="Check" class="Action.CheckingAction" method="execute">
+
+        </action>
     </package>
 </struts>
