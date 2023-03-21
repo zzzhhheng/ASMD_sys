@@ -18,20 +18,20 @@ public class Exam {
     //数据库相关属性
     private MysqlTool mysql=new MysqlTool();
     private Connection con;
-    private Statement statement;
+    private PreparedStatement ps;
 
 
 
     Exam(){ //构造函数后，自动存入1000道题入数据库(在优化阶段可以使用多线程，减少数据写入数据库所需时间)
         con= mysql.openDB();
         Exercise ex01=new Exercise();
-        ex01.generateAdditionExercise(2500);
+        ex01.generateAdditionExercise(2);
         Exercise ex02=new Exercise();
-        ex02.generateSubstractExercise(2500);
+        ex02.generateSubstractExercise(2);
         Exercise ex03=new Exercise();
-        ex03.generateMultiplyExercise(2500);
+        ex03.generateMultiplyExercise(2);
         Exercise ex04=new Exercise();
-        ex04.generateDivisionExercise(2500);
+        ex04.generateDivisionExercise(2);
 
         while(ex01.hasNext()){
             operationList01.add(ex01.next());
@@ -46,44 +46,63 @@ public class Exam {
             operationList04.add(ex04.next());
         }
 
-
-
-
-
-
-
             //将生成的习题数组存入数据库
-            /*try {
-                statement=con.createStatement();
+            try {
+                //添加加法题目
+                for(int i=0;i<2;i++){
+                    String sql="INSERT INTO question (factor1,operator,factor2,result) VALUES (?,?,?,?)";
+                    ps= con.prepareStatement(sql);
+                    ps.setInt(1,operationList01.get(i).getLeft_operand());
+                    ps.setString(2,""+operationList01.get(i).getOperator());
+                    ps.setInt(3,operationList01.get(i).getRight_operand());
+                    ps.setInt(4,operationList01.get(i).getValue());
+                    int j = ps.executeUpdate();
+                    if (j == 0)
+                        System.out.println("添加失败");
+                }
+                //添加减法题目
+                for(int i=0;i<2;i++){
+                    String sql="INSERT INTO question (factor1,operator,factor2,result) VALUES (?,?,?,?)";
+                    ps= con.prepareStatement(sql);
+                    ps.setInt(1,operationList02.get(i).getLeft_operand());
+                    ps.setString(2,""+operationList02.get(i).getOperator());
+                    ps.setInt(3,operationList02.get(i).getRight_operand());
+                    ps.setInt(4,operationList02.get(i).getValue());
+                    int j = ps.executeUpdate();
+                    if (j == 0)
+                        System.out.println("添加失败");
+                }
+                //添加乘法题目
+                for(int i=0;i<2;i++){
+                    String sql="INSERT INTO question (factor1,operator,factor2,result) VALUES (?,?,?,?)";
+                    ps= con.prepareStatement(sql);
+                    ps.setInt(1,operationList03.get(i).getLeft_operand());
+                    ps.setString(2,""+operationList03.get(i).getOperator());
+                    ps.setInt(3,operationList03.get(i).getRight_operand());
+                    ps.setInt(4,operationList03.get(i).getValue());
+                    int j = ps.executeUpdate();
+                    if (j == 0)
+                        System.out.println("添加失败");
+                }
+                //添加除法题目
+                for(int i=0;i<2;i++){
+                    String sql="INSERT INTO question (factor1,operator,factor2,result) VALUES (?,?,?,?)";
+                    ps= con.prepareStatement(sql);
+                    ps.setInt(1,operationList04.get(i).getLeft_operand());
+                    ps.setString(2,""+operationList04.get(i).getOperator());
+                    ps.setInt(3,operationList04.get(i).getRight_operand());
+                    ps.setInt(4,operationList04.get(i).getValue());
+                    int j = ps.executeUpdate();
+                    if (j == 0)
+                        System.out.println("添加失败");
+                }
 
-                for(int i=0;i<2500;i++){
-                    //String sql="INSERT INTO problems VALUES (\'"+i+1+ "\',\'"+operationList01.get(i).asString()+"\',)";
-                    //int n=statement.executeUpdate(sql);
-                }
-                for(int i=0;i<2500;i++){
-                    //String sql="INSERT INTO problems VALUES (\'"+operationList02.get(i).asString()+"\',\'"+i+1+" \')";
-                    //int n=statement.executeUpdate(sql);
-                }
-                for(int i=0;i<2500;i++){
-                    //String sql="INSERT INTO problems VALUES (\'"+operationList03.get(i).asString()+"\',\'"+i+1+" \')";
-                    //int n=statement.executeUpdate(sql);
-                }
-                for(int i=0;i<2500;i++){
-                    //String sql="INSERT INTO problems VALUES (\'"+operationList04.get(i).asString()+"\',\'"+i+1+" \')";
-                    //int n=statement.executeUpdate(sql);
-                }
-
-
-                statement.close();
+                ps.close();
                 con.close();
-
 
             } catch (SQLException e) {
                 e.printStackTrace();
-            }*/
-
-
-
+            }
 
     }
   
@@ -108,22 +127,22 @@ public class Exam {
     //测试代码，看是否能将题目正确生成，且存入四种List中
     public static void main(String[] args) {
         Exam ex=new Exam();
-        System.out.println(ex.getOperationList01().size());
-        System.out.println(ex.getOperationList02().size());
-        System.out.println(ex.getOperationList03().size());
-        System.out.println(ex.getOperationList04().size());
-        for(int i=0;i<2500;i++){
-            System.out.println(ex.getOperationList01().get(i).asString());
-        }
-        for(int i=0;i<2500;i++){
-            System.out.println(ex.getOperationList02().get(i).toString());
-        }
-        for(int i=0;i<2500;i++){
-            System.out.println(ex.getOperationList03().get(i).toString());
-        }
-        for(int i=0;i<2500;i++){
-            System.out.println(ex.getOperationList04().get(i).toString());
-        }
-        //System.out.println(ex.getOperationList04().get(2).toString());
+//        System.out.println(ex.getOperationList01().size());
+//        System.out.println(ex.getOperationList02().size());
+//        System.out.println(ex.getOperationList03().size());
+//        System.out.println(ex.getOperationList04().size());
+//        for(int i=0;i<2500;i++){
+//            System.out.println(ex.getOperationList01().get(i).asString());
+//        }
+//        for(int i=0;i<2500;i++){
+//            System.out.println(ex.getOperationList02().get(i).toString());
+//        }
+//        for(int i=0;i<2500;i++){
+//            System.out.println(ex.getOperationList03().get(i).toString());
+//        }
+//        for(int i=0;i<2500;i++){
+//            System.out.println(ex.getOperationList04().get(i).toString());
+//        }
+//        //System.out.println(ex.getOperationList04().get(2).toString());
     }
 }
